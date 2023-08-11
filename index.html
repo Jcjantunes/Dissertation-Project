@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="platform/css/style.css">
+	<!-- Boxicons CDN Link -->
+	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://d3js.org/d3.v7.min.js"></script>
+	<script src="platform/data_files/authorsData.js"></script>
+  	<script src="platform/scripts/functions.js"></script>
+</head>
+
+<body onload="loadAllData(getData()); defineValues(); createBarChart(); createBarChartNPubs(); listPublications(); listDashboardAuthors(); 
+				createBarChartPubTypes(); createBarChartPubTypesPerYear(); createBarChartNCollabPubs(); createBarChartNStudentCollabPubs();
+				createBarChartPubArea(); createBarChartPubAreaPerYear(); createBarChartAuthorArea(); createBarChartPubPerAuthorArea();">
+  <div class="sidebar">
+
+    <svg class="logo" viewBox="0 0 700 390" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<g transform="translate(0.000000,383.000000) scale(0.100000,-0.100000)" fill="black" stroke="none">
+				<path d="M735 3697 c-145 -49 -242 -148 -301 -311 -85 -235 12 -509 214 -608
+				63 -31 74 -33 172 -33 98 0 110 2 176 33 79 37 107 38 112 4 2 -14 10 -22 23
+				-22 18 0 19 9 19 160 0 151 -1 160 -19 160 -15 0 -21 -10 -26 -42 -42 -248
+				-325 -363 -427 -173 -39 73 -53 166 -52 360 1 319 60 448 207 448 116 0 231
+				-111 268 -257 7 -27 17 -46 25 -46 11 0 14 30 14 155 0 118 -3 155 -13 155 -7
+				0 -18 -9 -25 -20 -17 -27 -41 -25 -125 11 -84 36 -179 46 -242 26z" fill="#c41230"/>
+				<path d="M4564 3588 c-44 -21 -57 -89 -24 -131 41 -52 116 -42 145 20 14 29
+				15 40 4 64 -21 53 -73 73 -125 47z" fill="#c41230"/>
+				<path d="M1440 3341 c-94 -21 -160 -76 -160 -132 0 -42 39 -79 85 -79 46 0 75
+				29 75 75 0 29 -6 39 -30 53 -16 9 -30 20 -30 25 0 15 52 27 115 27 95 0 108
+				-14 113 -128 5 -105 14 -97 -118 -106 -82 -6 -157 -25 -196 -51 -61 -40 -78
+				-151 -32 -210 67 -85 236 -94 320 -17 l27 25 26 -31 c67 -80 215 -52 240 45 3
+				14 4 28 1 30 -11 11 -36 -7 -36 -25 0 -25 -25 -46 -45 -38 -13 4 -15 35 -15
+				198 0 169 -3 198 -20 235 -20 45 -60 76 -120 93 -50 14 -159 20 -200 11z m170
+				-363 c0 -93 -14 -142 -47 -168 -27 -21 -82 -27 -113 -10 -24 13 -40 62 -40
+				122 0 62 22 106 58 114 15 3 32 7 37 9 6 2 31 4 58 4 l47 1 0 -72z" fill="#c41230"/>
+				<path d="M2255 3334 c-39 -20 -73 -52 -81 -76 -10 -33 -19 -19 -16 27 l4 45
+				-136 0 c-112 0 -136 -3 -136 -14 0 -10 14 -16 43 -18 l42 -3 3 -252 2 -253
+				-45 0 c-33 0 -45 -4 -45 -15 0 -13 28 -15 195 -15 167 0 195 2 195 15 0 12
+				-13 15 -60 15 l-60 0 0 180 c0 154 3 187 19 231 20 51 46 89 63 89 4 0 8 -18
+				8 -40 0 -85 90 -121 151 -61 42 43 37 112 -10 148 -23 17 -100 16 -136 -3z" fill="#c41230"/>
+				<path d="M2860 3337 c-19 -6 -56 -32 -82 -57 l-48 -46 0 48 0 48 -135 0 c-113
+				0 -135 -2 -135 -15 0 -11 12 -15 45 -15 l45 0 0 -255 0 -255 -45 0 c-33 0 -45
+				-4 -45 -15 0 -13 26 -15 175 -15 149 0 175 2 175 15 0 11 -11 15 -40 15 l-40
+				0 0 177 c0 201 8 232 81 297 45 42 86 47 115 15 17 -19 19 -41 22 -255 l3
+				-234 -41 0 c-29 0 -40 -4 -38 -12 4 -10 50 -14 176 -16 149 -2 172 0 172 13 0
+				11 -11 15 -44 15 l-44 0 -4 213 c-3 192 -5 216 -25 259 -36 78 -136 109 -243
+				75z" fill="#c41230"/>
+				<path d="M3423 3332 c-158 -56 -237 -222 -187 -392 22 -73 108 -160 179 -181
+				149 -42 286 16 340 144 18 44 19 67 2 67 -7 0 -20 -22 -30 -48 -23 -65 -52
+				-101 -101 -123 -53 -24 -113 -24 -153 1 -43 26 -65 100 -61 202 l3 73 179 3
+				179 2 -6 35 c-26 159 -199 269 -344 217z m133 -43 c14 -16 20 -40 23 -100 l3
+				-79 -87 0 -88 0 5 75 c4 61 9 80 28 100 30 32 88 34 116 4z" fill="#c41230"/>
+				<path d="M4005 3341 c-171 -44 -227 -205 -109 -310 l44 -39 -28 -5 c-64 -13
+				-112 -97 -98 -173 5 -22 21 -51 40 -70 l33 -33 -36 -23 c-81 -52 -87 -147 -14
+				-207 102 -84 283 -87 393 -7 133 96 147 320 25 381 -34 17 -64 20 -200 23 -87
+				1 -163 6 -168 11 -17 17 2 60 33 76 22 11 47 13 104 8 91 -7 149 7 201 50 68
+				55 82 130 41 211 l-24 47 21 14 c31 22 37 19 37 -20 0 -28 5 -38 25 -47 31
+				-14 70 1 77 29 18 68 -65 105 -145 64 -36 -18 -38 -18 -74 0 -44 21 -134 32
+				-178 20z m123 -61 c9 -17 12 -58 10 -131 -3 -125 -16 -149 -78 -149 -64 0 -75
+				23 -75 155 0 98 3 116 19 134 29 32 105 26 124 -9z m133 -589 c19 -16 24 -28
+				23 -65 -2 -95 -115 -179 -243 -180 -77 -1 -123 20 -158 74 -27 39 -29 79 -7
+				123 35 68 32 67 204 67 140 0 160 -2 181 -19z" fill="#c41230"/>
+				<path d="M5025 3340 c-56 -14 -84 -29 -125 -66 -55 -50 -87 -107 -98 -176 -31
+				-199 92 -351 283 -351 133 0 218 65 259 201 6 16 3 22 -9 22 -8 0 -18 -8 -21
+				-17 -40 -126 -119 -186 -221 -170 -76 13 -103 66 -103 202 l0 95 180 0 180 0
+				-6 33 c-18 95 -106 195 -197 222 -55 16 -76 17 -122 5z m107 -60 c13 -18 19
+				-45 21 -95 l2 -70 -84 -3 -83 -3 4 82 c3 71 6 83 27 100 34 28 88 22 113 -11z" fill="#c41230"/>
+				<path d="M4450 3316 c0 -9 12 -16 33 -18 l32 -3 3 -252 2 -253 -45 0 c-33 0
+				-45 -4 -45 -15 0 -13 27 -15 180 -15 153 0 180 2 180 15 0 11 -12 15 -45 15
+				l-45 0 0 270 0 270 -125 0 c-102 0 -125 -3 -125 -14z" fill="#c41230"/>
+				<path d="M400 2525 c0 -11 12 -15 45 -15 l45 0 0 -392 c0 -430 -1 -436 -58
+				-453 -17 -5 -32 -15 -32 -22 0 -10 27 -13 110 -13 91 0 110 3 110 15 0 9 -9
+				15 -24 15 -13 0 -34 9 -47 19 l-24 19 -3 401 c-2 274 0 401 8 401 5 0 10 -5
+				10 -11 0 -10 157 -460 280 -804 12 -33 24 -51 36 -53 16 -2 38 53 157 395 76
+				219 144 414 152 433 12 31 14 -14 14 -382 l1 -418 -40 0 c-29 0 -40 -4 -40
+				-15 0 -13 26 -15 175 -15 146 0 175 2 175 14 0 10 -14 16 -42 18 l-43 3 0 420
+				0 420 43 3 c28 2 42 8 42 18 0 11 -26 14 -148 14 l-148 0 -51 -147 c-79 -228
+				-144 -415 -155 -443 -11 -27 -13 -23 -160 413 l-60 177 -164 0 c-139 0 -164
+				-2 -164 -15z" fill="#c41230"/>
+				<path d="M2020 2525 c0 -11 12 -15 45 -15 l45 0 0 -425 0 -425 -45 0 c-33 0
+				-45 -4 -45 -15 0 -13 27 -15 180 -15 153 0 180 2 180 15 0 11 -12 15 -45 15
+				l-45 0 0 440 0 440 -135 0 c-113 0 -135 -2 -135 -15z" fill="#c41230"/>
+				<path d="M2410 2525 c0 -11 12 -15 45 -15 l45 0 0 -425 0 -425 -45 0 c-33 0
+				-45 -4 -45 -15 0 -13 27 -15 180 -15 153 0 180 2 180 15 0 11 -12 15 -45 15
+				l-45 0 0 440 0 440 -135 0 c-113 0 -135 -2 -135 -15z" fill="#c41230"/>
+				<path d="M4820 1985 l0 -355 323 -2 322 -3 3 -652 2 -653 685 0 685 0 0 685 0
+				685 -650 0 -650 0 0 325 0 325 -360 0 -360 0 0 -355z m648 20 l2 -270 -76 76
+				c-76 76 -77 77 -65 109 34 99 -12 192 -109 221 -54 16 -105 4 -151 -38 -134
+				-121 -2 -332 170 -272 32 11 34 10 102 -57 38 -38 69 -72 69 -76 0 -5 -117 -8
+				-260 -8 l-260 0 0 295 0 295 288 -2 287 -3 3 -270z m1302 -590 l0 -215 -77 0
+				c-76 0 -79 1 -95 29 -49 87 -167 87 -216 0 -17 -28 -19 -29 -99 -29 -73 0 -83
+				2 -83 18 0 27 -47 95 -83 119 -63 43 -145 48 -220 12 -28 -13 -29 -12 -168
+				127 -76 76 -139 142 -139 146 0 5 266 8 590 8 l590 0 0 -215z m-963 -160 c-22
+				-47 -21 -129 2 -180 21 -47 66 -88 116 -106 l35 -13 0 -73 0 -73 -45 -43 c-40
+				-38 -45 -49 -45 -86 0 -51 22 -92 61 -115 28 -17 29 -20 29 -97 l0 -79 -210 0
+				-210 0 0 592 0 593 142 -142 142 -142 -17 -36z m277 21 c86 -65 66 -200 -36
+				-241 -54 -21 -98 -13 -143 26 -42 37 -59 89 -45 139 29 102 141 140 224 76z
+				m458 -53 c51 -44 15 -132 -54 -133 -56 0 -94 69 -64 116 29 43 79 50 118 17z
+				m-164 -118 c16 -34 69 -65 112 -65 43 0 96 31 112 65 11 24 16 25 90 25 l78 0
+				0 -340 c0 -187 -3 -340 -8 -340 -4 0 -139 132 -299 293 l-293 292 18 48 17 47
+				81 0 c77 0 81 -1 92 -25z m39 -407 c161 -161 293 -296 293 -300 0 -5 -153 -8
+				-340 -8 l-340 0 0 78 0 79 37 24 c77 50 77 158 1 208 l-38 24 0 78 0 77 30 7
+				c16 4 32 11 35 16 4 5 12 9 18 9 7 0 144 -132 304 -292z m-367 32 c12 -12 20
+				-33 20 -55 0 -46 -29 -75 -74 -75 -39 0 -76 37 -76 75 0 12 9 34 21 49 26 33
+				79 36 109 6z"/>
+				<path d="M3787 2204 c-31 -9 -65 -31 -93 -59 l-44 -44 0 50 0 50 -132 -3 c-94
+				-2 -133 -7 -136 -15 -2 -9 10 -13 42 -13 l46 0 0 -254 0 -255 -42 -3 c-23 -2
+				-43 -9 -46 -15 -3 -10 36 -13 172 -13 150 0 176 2 176 15 0 11 -11 15 -41 15
+				l-40 0 3 183 3 184 30 49 c32 50 85 94 115 94 10 0 28 -9 41 -19 24 -19 24
+				-21 27 -255 l3 -236 -35 0 c-25 0 -36 -4 -36 -15 0 -13 26 -15 170 -15 144 0
+				170 2 170 15 0 11 -12 15 -44 15 l-44 0 -4 218 c-3 206 -4 219 -26 258 -13 22
+				-37 49 -53 58 -41 24 -124 29 -182 10z" fill="#c41230"/>
+				<path d="M1657 2196 c-80 -29 -154 -112 -178 -201 -19 -68 -7 -185 24 -238 87
+				-149 289 -193 421 -92 33 25 96 131 96 162 0 34 -28 7 -54 -52 -37 -84 -77
+				-117 -152 -123 -115 -10 -153 39 -154 196 l0 92 181 0 181 0 -7 37 c-17 90
+				-83 175 -165 212 -52 24 -136 27 -193 7z m132 -33 c24 -20 40 -76 41 -140 l0
+				-43 -85 0 -85 0 0 65 c0 66 17 118 42 128 27 11 67 6 87 -10z" fill="#c41230"/>
+				<path d="M2967 2196 c-128 -46 -199 -149 -200 -287 0 -119 63 -217 173 -268
+				45 -21 70 -26 135 -26 125 0 210 49 273 155 24 40 27 55 27 140 0 86 -3 100
+				-29 148 -55 98 -153 152 -274 152 -37 -1 -84 -7 -105 -14z m175 -45 l33 -29 0
+				-211 0 -211 -27 -26 c-21 -22 -36 -27 -74 -27 -40 0 -51 4 -76 31 l-28 32 0
+				198 c1 210 5 233 51 258 41 23 85 17 121 -15z" fill="#c41230"/>
+				<path d="M405 1157 c-3 -6 -4 -197 -3 -422 l3 -410 80 0 80 0 3 161 2 162 128
+				4 c104 4 136 8 180 27 99 44 148 131 140 248 -9 117 -68 197 -170 228 -68 20
+				-436 22 -443 2z m411 -171 c29 -29 34 -41 34 -81 0 -40 -5 -52 -34 -81 l-34
+				-34 -106 0 -106 0 0 115 0 115 106 0 106 0 34 -34z"/>
+				<path d="M4825 1158 c-3 -7 -4 -198 -3 -423 l3 -410 80 0 80 0 0 420 0 420
+				-78 3 c-56 2 -79 -1 -82 -10z"/>
+				<path d="M2367 1104 c-4 -4 -7 -43 -7 -86 l0 -78 -45 0 -46 0 3 -62 3 -63 42
+				-3 42 -3 3 -197 c3 -221 7 -235 76 -266 28 -13 59 -16 122 -14 l85 3 0 65 0
+				65 -43 6 c-73 10 -77 19 -77 187 l0 147 68 3 67 3 0 64 0 64 -67 3 -68 3 -5
+				80 -5 80 -70 3 c-39 1 -74 0 -78 -4z"/>
+				<path d="M1300 941 c-68 -21 -132 -75 -164 -138 -29 -58 -41 -163 -27 -239 15
+				-85 39 -131 91 -178 67 -60 158 -84 250 -65 69 14 99 29 141 71 101 101 118
+				322 34 445 -27 41 -87 86 -134 102 -38 12 -152 14 -191 2z m141 -147 c89 -45
+				92 -262 5 -320 -19 -12 -38 -15 -67 -11 -75 10 -103 56 -103 172 0 91 17 135
+				62 159 35 20 66 20 103 0z"/>
+				<path d="M2055 941 c-11 -5 -32 -21 -47 -35 l-27 -27 -3 28 c-3 28 -3 28 -86
+				31 l-82 3 2 -308 3 -308 60 -3 c113 -6 105 -20 105 197 0 175 1 190 21 214 22
+				29 80 49 131 45 l33 -3 14 74 c13 70 13 75 -4 88 -21 14 -88 17 -120 4z"/>
+				<path d="M3584 932 c-53 -25 -107 -90 -127 -153 -25 -75 -23 -223 3 -293 24
+				-63 78 -117 136 -137 63 -21 153 -18 197 8 l37 22 0 -25 c0 -75 -59 -114 -173
+				-114 l-74 0 -7 -67 c-4 -38 -3 -70 3 -76 5 -5 56 -7 118 -5 93 3 116 8 166 32
+				31 15 69 43 83 62 51 66 53 85 54 432 l0 322 -81 0 c-72 0 -81 -2 -86 -20 -5
+				-19 -6 -19 -37 3 -43 31 -154 35 -212 9z m215 -157 c24 -23 26 -34 29 -121 6
+				-141 -19 -184 -106 -184 -36 0 -49 5 -73 31 -34 36 -43 76 -37 164 4 70 25
+				109 69 133 34 18 88 7 118 -23z"/>
+				<path d="M4300 941 c-80 -25 -151 -90 -153 -142 l-2 -34 79 -9 c73 -9 80 -8
+				95 11 34 44 89 55 140 28 32 -16 41 -33 41 -75 l0 -27 -113 -5 c-136 -5 -193
+				-27 -235 -91 -36 -55 -38 -144 -4 -199 55 -88 238 -112 322 -42 28 24 30 24
+				30 6 0 -33 24 -43 97 -40 l68 3 3 233 c2 216 1 235 -18 271 -40 79 -128 121
+				-248 120 -42 0 -88 -4 -102 -8z m200 -394 c0 -34 -6 -49 -28 -71 -50 -47 -137
+				-48 -168 -1 -40 62 19 115 129 115 l67 0 0 -43z"/>
+				<path d="M2770 718 c0 -126 5 -240 11 -261 13 -50 71 -113 116 -128 19 -6 65
+				-9 103 -7 54 3 74 9 103 31 l36 27 3 -27 c3 -27 6 -28 63 -31 32 -2 69 -1 82
+				3 l23 5 0 305 0 305 -85 0 -85 0 0 -200 c0 -219 -5 -246 -55 -268 -55 -25
+				-105 -11 -130 38 -12 23 -15 70 -15 230 l0 200 -85 0 -85 0 0 -222z"/>
+			</g>
+		</svg>
+      <ul class="nav-links">
+        <li>
+          <a href="#" class="active">
+            <i class='bx bx-grid-alt' ></i>
+            <span class="links_name">Global Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="platform/web_pages/authors.html">
+            <i class='bx bx-box' ></i>
+            <span class="links_name">Authors</span>
+          </a>
+        </li>
+        <li>
+          <a href="platform/web_pages/publications.html">
+            <i class='bx bx-list-ul' ></i>
+            <span class="links_name">Publications</span>
+          </a>
+        </li>
+
+      </ul>
+
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button">
+      	<i class='bx bx-menu sidebarBtn'></i>
+        <span class="dashboard">Global Dashboard</span>
+      </div>
+	  <div class="profile-details">
+        <!--<img src="images/profile.jpg" alt="">-->
+       <a id="downloadButton" href="platform/data_files/authorsDataExcel.xlsx" download class="admin_name">Download Data</a>
+      </div>
+    </nav>
+	
+    <div id="section1" class="home-content">
+      <div class="overview-boxes">
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Citations Nº</div>
+            <div class="number" id="citationsCount"></div>
+          </div>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">h-Index</div>
+            <div class="number" id="hIndex"></div>
+          </div>
+        </div>
+		<div class="box">
+			<div class="right-side">
+			  <div class="box-topic">i10-Index</div>
+			  <div class="number" id="i10Index"></div>
+			</div>
+		  </div>
+      </div>
+
+      <div class="overview-boxes">
+		<div class="box">
+			<div class="right-side">
+			  <div class="box-topic">Citations Nº</div>
+			  <p> (Last 5 years) </p>
+			  <div class="number" id="citationsCount5"></div>
+			</div>
+		</div>
+		<div class="box">
+			<div class="right-side">
+			  <div class="box-topic">h-Index</div>
+			  <p> (Last 5 years) </p>
+			  <div class="number" id="hIndex5"5></div>
+			</div>
+		  </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">i10-Index</div>
+            <p> (Last 5 years) </p>
+            <div class="number" id="i10Index5"></div>
+          </div>
+        </div>
+      </div>
+
+	  <div class="overview-boxes">
+		<div>
+		</div>
+
+		<div class="box">
+			<div class="right-side">
+			  <div class="box-topic">Nº of Authors</div>
+			  <div class="number" id="nAuthors"></div>
+			</div>
+		</div>
+		<div class="box">
+			<div class="right-side">
+			  <div class="box-topic">Nº of Publications</div>
+			  <div class="number" id="nPublications"></div>
+			</div>
+		</div>
+
+		<div>
+		</div>
+	</div>
+
+	<div class="overview-boxes">
+		<div>
+		</div>
+
+		<div class="box">
+			<div class="right-side">
+				<div class="box-topic">Nº of International Collaborations</div>
+				<div class="number" id="nCollab"></div>
+			</div>
+		</div>	
+		<div class="box">
+			<div class="right-side">
+				<div class="box-topic">Nº of Student Collaborations</div>
+				<div class="number" id="nStudentCollab"></div>
+			</div>
+		</div>
+
+		<div>
+		</div>
+	</div>
+	
+	<section id="section2"> </section>
+	  <div id="citationsPerYear" class="sales-boxes">
+        
+      </div>
+
+	  <div id="typerPerPub" class="sales-boxes">
+        
+      </div>  
+
+	  <div id="areaPerPub" class="sales-boxes">
+        
+      </div>
+
+	  <div id="areaPerPub2" class="sales-boxes">
+        
+      </div>
+
+	  <div id="collabsPerYear" class="sales-boxes">
+        
+      </div>
+
+      <div id="section3" class="report-container">
+		<div class="report-header">
+			<h1 class="recent-Articles">Publications</h1>
+			<select id="selectButton" class="sortView"></select>
+			<button class="view" onclick="window.location.href = 'platform/web_pages/publications.html';">View All</button>
+		</div>
+		
+		<div id="inputSearch2">
+			<input type="text" id="myInput" onkeyup="filterPublicationssByName()" placeholder="Search for titles..." title="Type in a name">
+		</div>
+
+		<div id="tableFixHead" class="report-body row tbl-fixed">
+			<table id="fixedTable" class="table-striped table-condensed">
+				<thead>
+					<tr>
+						<th class="t-op" style="width:60px;">N°.</th>
+						<th class="t-op">Title</th>
+						<th class="t-op">Author (Students)</th>
+						<th class="t-op">Publication Year</th>
+						<th class="t-op">Area Tag</th>
+						<th class="t-op">Citations Count</th>
+						<th class="t-op">Type</th>
+						<th class="t-op">International Collaboration</th>
+						<th class="t-op">Student Collaboration</th>
+					</tr>
+				</thead>
+
+				<tbody id="tableBody">
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div id="section4" class="report-container">
+		<div class="report-header">
+			<h1 class="recent-Articles">Authors</h1>
+			<select id="selectButtonAuthor" class="sortView2"></select>
+			<button class="view" onclick="window.location.href = 'platform/web_pages/authors.html';">View All</button>
+		</div>
+		
+		<div id="inputSearch3">
+			<input type="text" id="myInput2" onkeyup="filterPublicationssByName2()" placeholder="Search for names..." title="Type in a name">
+		</div>
+
+		<div id="tableFixHead" class="report-body row tbl-fixed">
+			<table id="fixedTable2" class="table-striped table-condensed">
+				<thead>
+					<tr>
+						<th class="t-op" style="width:60px;">N°.</th>
+						<th class="t-op">Name</th>
+						<th class="t-op">Affiliation</th>
+						<th class="t-op">Status</th>
+						<th class="t-op">Type</th>
+						<th class="t-op">Research Area</th>
+						<th class="t-op">Citations Count</th>
+						<th class="t-op" style="width:150px;">Nº of Publications</th>
+						<th class="t-op">Start Research Year</th>
+						<th class="t-op">End Research Year</th>
+						<th class="t-op">Graduation Year</th>
+						<th class="t-op">Nº of International Collaborations</th>
+						<th class="t-op">Nº of Student Collaborations</th>
+					</tr>
+				</thead>
+
+				<tbody id="tableBody2">
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</section>
+
+  <script>
+	let sidebar = document.querySelector(".sidebar");
+	let sidebarBtn = document.querySelector(".sidebarBtn");
+	sidebarBtn.onclick = function() {
+		sidebar.classList.toggle("active");
+		if(sidebar.classList.contains("active")){
+			sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+			}
+		else {
+			sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+		}
+	}
+  </script>
+
+</body>
+</html>
+
